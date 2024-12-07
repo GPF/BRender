@@ -130,7 +130,7 @@ static br_error maybe_allocate_surface(SDL_Surface **out_surf, br_boolean *chang
     if(pm->pixels == NULL || (pm->flags & BR_PMF_NO_ACCESS))
         return BRE_UNSUPPORTED;
 
-    if((result = BRenderToSDLPixelFormat(pm->type, &format, &bpp)) != BRE_OK)
+    if((result = BRenderToSDLPixelFormat(pm->type, &format, (br_int_32 *)&bpp)) != BRE_OK)
         return result;
 
     /*

@@ -152,7 +152,7 @@ br_device_pixelmap *DevicePixelmapSDL2Allocate(br_device *dev, br_output_facilit
     UASSERT(dev != NULL);
     UASSERT(outfcty == NULL || ObjectDevice(outfcty) == dev);
 
-    if(SDLToBRenderPixelFormat(surface->format->format, &bpp, &type) != BRE_OK)
+    if(SDLToBRenderPixelFormat(surface->format->format, (br_int_32 *)&bpp, &type) != BRE_OK)
         return NULL;
 
     self = BrResAllocate(dev->res, sizeof(br_device_pixelmap), BR_MEMORY_OBJECT);
@@ -833,7 +833,7 @@ br_error BR_CMETHOD_DECL(br_device_pixelmap_sdl2, match)(br_device_pixelmap *sel
         return BR_CMETHOD(br_device_pixelmap_mem, match)(self, newpm, tv);
     }
 
-    if(BRenderToSDLPixelFormat(mt.type, &format, &bpp) != BRE_OK) {
+    if(BRenderToSDLPixelFormat(mt.type, &format, (br_int_32 *)&bpp) != BRE_OK) {
         /*
          * Unsupported pixel format, fall back to memory.
          */

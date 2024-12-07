@@ -281,7 +281,7 @@ static br_error BR_CMETHOD_DECL(br_output_facility_sdl2, pixelmapNew)(br_output_
      * Always validate the pixel format, if given.
      */
     if(pt.pixel_type != BR_PMT_MAX) {
-        if(BRenderToSDLPixelFormat(pt.pixel_type, &format, &bpp) != BRE_OK)
+        if(BRenderToSDLPixelFormat(pt.pixel_type, &format, (br_int_32 *)&bpp) != BRE_OK)
             return BRE_FAIL;
     }
 
